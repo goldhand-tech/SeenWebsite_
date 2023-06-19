@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "../layout/layout";
-import { ErrorPage } from "../layout/errorPage";
 import { ResetPassword } from "../components/ResetPassword";
 import { HomePage } from "../layout/HomePage";
 import { PrivacyPolicy } from "../components/PrivacyPolicy";
 import { TermsConditions } from "../components/TermsConditions";
+import { ResetLayout } from "../components/ResetLayout";
+import { StatusResetPasswordPage } from "../components/StatusResetPasswordPage";
+import { Layout } from "../layout/Layout";
+import { ErrorPage } from "../layout/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,11 @@ const router = createBrowserRouter([
       {
         path: "privacypolicy",
         element: <PrivacyPolicy />,
+      },
+
+      {
+        path: "worked",
+        element: <StatusResetPasswordPage />,
       },
 
       {

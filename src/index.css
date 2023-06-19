@@ -9,6 +9,11 @@ body {
   /* height: 100vh; */
 }
 
+html,
+body {
+  min-height: 100vh;
+}
+
 /*Calygraphy*/
 @media screen and (max-width: 450px) {
   a {
@@ -26,6 +31,18 @@ body {
   a {
     font-size: 2.5rem;
   }
+}
+
+label {
+  color: white;
+  font-family: "LemonMilk";
+  font-weight: 400;
+}
+
+.btn-primary {
+  color: white;
+  font-family: "LemonMilk";
+  font-weight: 400;
 }
 
 .navbar {
@@ -228,7 +245,6 @@ body {
     max-width: 60%;
     height: auto;
   }
-
   .grid-container {
     grid-template-columns: 1fr; /* Single column */
     grid-template-rows: auto auto; /* Two rows */
@@ -319,4 +335,25 @@ body {
   .contact-details a {
     font-size: 2.5rem;
   }
+}
+
+/*Error div */
+
+.errorDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.errorDiv h1 {
+  color: white;
+  font-family: "LemonMilk";
+  font-weight: 400;
+}
+
+.errorDiv h2 {
+  color: white;
+  font-family: "LemonMilk";
+  font-weight: 400;
 }

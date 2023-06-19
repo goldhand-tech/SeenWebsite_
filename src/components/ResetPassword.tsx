@@ -1,85 +1,121 @@
 import { useLocation } from "react-router-dom";
-import { Input, Button } from "@chakra-ui/react";
+import useVerifyCredential from "../hooks/useResetPassword";
 import { useEffect, useState } from "react";
-import { CanceledError, AxiosError } from "axios";
-import create from "../services/httpService";
+import { validatePasswords } from "../services/passwordSchema";
+import { HttpService } from "../services/apiClient";
+import { useNavigate } from "react-router-dom";
 
 export const ResetPassword = () => {
   const location = useLocation();
   const searchparams = new URLSearchParams(location.search);
   const token = searchparams.get("token");
   const id = searchparams.get("id");
-  const httpService = create("/auth/resetPassword");
-
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(true);
-
   if (!token || !id) {
     throw new Error();
   }
+  let navigate = useNavigate();
+
+  const [passwords, setPasswords] = useState({
+    password: "",
+    passwordConfirm: "",
+  });
+  const [errors, setError] = useState({
+    errosPassword: "",
+    errorConfirm: "",
+  });
+  const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    const { cancel, req } = http.get();
-    req
-      .then((e) => {
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-        if (err instanceof CanceledError) return;
-        setError((err as AxiosError).message);
-      });
-    return () => cancel();
-  }, []);
+    validatePasswords({ passwords, setIsValid, setError });
+  }, [passwords.password, passwords.passwordConfirm]);
 
-  if (error) throw new Error();
-
-  //I will need a use query
-
-  const handleSubmit = () => {
-    // Handle form submissione
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    let password = passwords.password;
+    let resetCredential = {
+      token: token!,
+      id: parseInt(id!),
+      password: password!,
+    };
+    const service = new HttpService("");
+    let response = await service.sendPasswordReset(resetCredential);
+    if (response) {
+      navigate("/worked?a=1");
+    } else {
+      navigate("/worked?a=0");
+    }
   };
 
-  return isLoading ? (
-    <>Loading...</>
-  ) : (
-    <div className="container mt-5">
+  const { data, isLoading, error } = useVerifyCredential({ id, token });
+
+  if (isLoading)
+    return (
+      <div className={"errorDiv"}>
+        <h2>Loading...</h2>
+      </div>
+    );
+
+  if (error) throw error;
+
+  if (!data)
+    return (
+      <div className={"errorDiv"}>
+        <h2>
+          Sorry, but the time elapsed, please reset password again, and be sure
+          you are in time.
+        </h2>
+      </div>
+    );
+
+  return (
+    <div className="container mt-5" style={{ height: "80vh" }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
-              <label htmlFor="password1" className="form-label">
+              <label htmlFor="password" className="form-label">
                 New Password
               </label>
               <input
                 type="password"
+                onChange={(e) => {
+                  setPasswords({ ...passwords, password: e.target.value });
+                }}
                 className="form-control"
-                id="password1"
+                id="password"
                 placeholder="Enter new password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
               />
+              {errors.errosPassword.length != 0 && (
+                <p>{errors.errosPassword}</p>
+              )}
             </div>
             <div className="mb-3">
-              <label htmlFor="password2" className="form-label">
+              <label htmlFor="confirmPassword" className="form-label">
                 Confirm Password
               </label>
               <input
+                onChange={(e) => {
+                  setPasswords({
+                    ...passwords,
+                    passwordConfirm: e.target.value,
+                  });
+                }}
                 type="password"
                 className="form-control"
-                id="password2"
+                id="confirmPassword"
                 placeholder="Confirm new password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
               />
+              {errors.errorConfirm.length != 0 && <p>{errors.errorConfirm}</p>}
             </div>
-            <button type="submit" className="btn btn-primary">
-              Reset Password
-            </button>
+            <div className="d-grid gap-2">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={!isValid}
+              >
+                Reset Password
+              </button>
+            </div>
           </form>
         </div>
       </div>
