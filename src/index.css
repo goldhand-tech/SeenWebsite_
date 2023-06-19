@@ -1,0 +1,11 @@
+/* Body background */
+
+body {
+  /* background: rgb(253, 153, 153); */
+  background: linear-gradient(
+    20deg,
+    rgba(253, 153, 153, 1) 0%,
+    rgba(0, 122, 255, 1) 100%
+  );
+  height: 100vh;
+}
