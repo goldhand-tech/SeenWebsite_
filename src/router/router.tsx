@@ -3,6 +3,8 @@ import { Layout } from "../layout/layout";
 import { ErrorPage } from "../layout/errorPage";
 import { ResetPassword } from "../components/ResetPassword";
 import { HomePage } from "../layout/HomePage";
+import { PrivacyPolicy } from "../components/PrivacyPolicy";
+import { TermsConditions } from "../components/TermsConditions";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +16,19 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+
       {
-        path: "passwordReset",
+        path: "termsconditions",
+        element: <TermsConditions />,
+      },
+
+      {
+        path: "privacypolicy",
+        element: <PrivacyPolicy />,
+      },
+
+      {
+        path: "passwordreset",
         element: <ResetPassword />,
       },
     ],
