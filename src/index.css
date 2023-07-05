@@ -43,6 +43,13 @@ label {
   color: white;
   font-family: "LemonMilk";
   font-weight: 400;
+  padding: 10px 50px;
+}
+.btn-secondary {
+  color: white;
+  font-family: "LemonMilk";
+  font-weight: 400;
+  padding: 10px 50px;
 }
 
 .navbar {
@@ -302,7 +309,7 @@ label {
 @media screen and (min-width: 767px) {
   .app-store-button img {
     display: block;
-    width: 300px;
+    width: 225px;
     height: auto;
   }
 }
@@ -357,3 +364,17 @@ label {
   font-family: "LemonMilk";
   font-weight: 400;
 }
+
+/*CheckIn*/
+.checkin-h {
+  color: white;
+  font-family: "LemonMilk";
+  font-weight: 400;
+}
+
+.checkin-h3 {
+  color: black;
+  font-weight: 500;
+}
+
+/*Label*/

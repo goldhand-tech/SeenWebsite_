@@ -7,6 +7,7 @@ import { ResetLayout } from "../components/ResetLayout";
 import { StatusResetPasswordPage } from "../components/StatusResetPasswordPage";
 import { Layout } from "../layout/Layout";
 import { ErrorPage } from "../layout/ErrorPage";
+import CheckInAccept from "../components/CheckIn/CheckInAccept";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "passwordreset",
         element: <ResetPassword />,
+      },
+      {
+        path: "checkin",
+        element: <CheckInAccept />,
       },
     ],
   },
