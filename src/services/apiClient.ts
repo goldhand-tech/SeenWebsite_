@@ -61,7 +61,7 @@ class HttpService {
   getCheckInData = (
     tokenCheckIn: string,
     endpoint: string = "checkins/inweb"
-  ) => {
+  ): Promise<GetCheckInData | null> => {
     return this.axiosInstance
       .get<GetCheckInData>(endpoint, {
         headers: {
@@ -79,12 +79,27 @@ class HttpService {
   //false on error || or number invalid
   //true on ok
   sendCheckInAnswer = (
-    userinput: { username: string; phonenumber: string },
+    userinput: { username: string; phonenumber: string; time: string },
     token: string,
     status: boolean,
     endpoint: string = "checkins/inweb"
-  ): boolean => {
-    return false;
+  ): Promise<boolean> => {
+    return this.axiosInstance
+      .post(endpoint, userinput, {
+        headers: {
+          "x-checkin-token": token,
+        },
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .catch((e) => {
+        return false;
+      });
   };
 }
 

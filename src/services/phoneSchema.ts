@@ -31,7 +31,6 @@ const validatePhoneNumber = ({
   if (username.length != 0) {
     const isValidUsername = validateUsername(username);
     let str = isValidUsername ? "" : "Invalid username";
-    console.log("The str is:" + str);
     setErrorUsername(str);
     setIsValid(false);
   }

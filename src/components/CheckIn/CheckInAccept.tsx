@@ -6,6 +6,7 @@ import { useGetCheckInData } from "../../hooks/useGetCheckIn";
 import { useLocation, useNavigate } from "react-router-dom";
 import { validatePhoneNumber } from "../../services/phoneSchema";
 import { HttpService } from "../../services/apiClient";
+import { getCurrentTime } from "../../services/getTime";
 
 export const CheckInAccept = () => {
   const location = useLocation();
@@ -73,7 +74,6 @@ export const CheckInAccept = () => {
   };
 
   useEffect(() => {
-    console.log("userinput is" + userinput);
     try {
       validatePhoneNumber({
         userinput,
@@ -89,11 +89,11 @@ export const CheckInAccept = () => {
 
   const sendQuery = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Works" + userinput);
 
     const service = new HttpService("");
+    console.log("The token is" + token);
     let response = await service.sendCheckInAnswer(
-      userinput,
+      { ...userinput, time: getCurrentTime() },
       token,
       accepted == "1"
     );

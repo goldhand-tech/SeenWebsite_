@@ -16,8 +16,6 @@ export const CheckInAcceptPhonePage = ({
   setPhoneNumber,
   setUsername,
 }: Props) => {
-  console.log("Rerendered");
-
   return (
     <div className="m-auto">
       <div className="d-flex flex-column justify-content-around">
