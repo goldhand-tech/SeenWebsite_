@@ -40,9 +40,9 @@ export const ResetPassword = () => {
     const service = new HttpService("");
     let response = await service.sendPasswordReset(resetCredential);
     if (response) {
-      navigate("/worked?a=1");
+      navigate("/worked?error=0&page=0");
     } else {
-      navigate("/worked?a=0");
+      navigate("/worked?error=1&page=0");
     }
   };
 

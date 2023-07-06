@@ -1,24 +1,61 @@
+import { isValid } from "zod";
+
 interface Props {
-  phonenumber: string;
+  userinput: { phonenumber: string; username: string };
   setIsValid: (valid: boolean) => void;
-  setError: (error: string) => void;
+  setErrorPhone: (error: string) => void;
+  setErrorUsername: (error: string) => void;
 }
 
-const validatePhoneNumber = ({ phonenumber, setIsValid, setError }: Props) => {
-  if (phonenumber.length == 0) {
+const validatePhoneNumber = ({
+  userinput,
+  setIsValid,
+  setErrorPhone,
+  setErrorUsername,
+}: Props) => {
+  let { phonenumber, username } = userinput;
+
+  if (phonenumber.length == 0 && username.length == 0) {
     setIsValid(false);
-    setError("Phone number invalid");
+    setErrorUsername("Invalid username");
+    setErrorPhone("Invalid phone number");
+    setIsValid(false);
     return;
   }
-  const isValidPhone = validateTelephoneNumber(phonenumber);
-  if (!isValidPhone) {
+  if (phonenumber.length != 0) {
+    const isValidPhone = validateTelephoneNumber(phonenumber);
+    let str = isValidPhone ? "" : "Invalid phone number";
+    setErrorPhone(str);
     setIsValid(false);
-    setError("Phone number invalid");
-  } else {
-    setIsValid(true);
-    setError("");
+  }
+  if (username.length != 0) {
+    const isValidUsername = validateUsername(username);
+    let str = isValidUsername ? "" : "Invalid username";
+    console.log("The str is:" + str);
+    setErrorUsername(str);
+    setIsValid(false);
+  }
+  if (phonenumber.length != 0 && username.length != 0) {
+    const isValidPhone = validateTelephoneNumber(phonenumber);
+    const isValidUsername = validateUsername(username);
+    if (isValidPhone && isValidUsername) {
+      setIsValid(true);
+      setErrorPhone("");
+      setErrorUsername("");
+    }
   }
 };
+
+function validateUsername(input: string): boolean {
+  const minLength = 2;
+  const maxLength = 20;
+
+  if (input.length <= minLength || input.length > maxLength) {
+    return false;
+  }
+
+  return true;
+}
 
 function validateTelephoneNumber(input: string): boolean {
   const numberRegex = /^[0-9+]+$/;

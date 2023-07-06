@@ -1,48 +1,107 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { CheckInAppImg } from "./CheckInAppImg";
 import { CheckInAcceptPage } from "./CheckInAcceptPage";
 import { CheckInAcceptPhonePage } from "./CheckInAcceptPhonePage";
 import { useGetCheckInData } from "../../hooks/useGetCheckIn";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { validatePhoneNumber } from "../../services/phoneSchema";
+import { HttpService } from "../../services/apiClient";
 
 export const CheckInAccept = () => {
   const location = useLocation();
   const searchparams = new URLSearchParams(location.search);
   const token = searchparams.get("token");
-
   if (!token) {
     throw new Error();
   }
+  let navigate = useNavigate();
 
   const { data, isLoading, error } = useGetCheckInData(token!);
   const [statusPage, setStatusPage] = useState(0);
-  const [phoneValidation, setPhoneValidation] = useState({
-    error: "",
+  const [userValidation, setUserValidation] = useState({
+    error: {
+      phoneError: "",
+      usernameError: "",
+    },
     isValid: false,
   });
-  const [phonenumber, setPhoneNumber] = useState("");
+  const [userinput, setUserInput] = useState({
+    phonenumber: "",
+    username: "",
+  });
+  const accepted = statusPage == 1 ? "1" : "0";
+
+  const setPhoneNumber = (phonenumber: string) => {
+    setUserInput((prevState) => ({
+      ...prevState,
+      phonenumber,
+    }));
+  };
+
+  const setUsername = (username: string) => {
+    setUserInput((prevState) => ({
+      ...prevState,
+      username,
+    }));
+  };
 
   const setIsValid = (isValid: boolean) => {
-    setPhoneValidation((prevState) => ({
+    setUserValidation((prevState) => ({
       ...prevState,
       isValid: isValid,
     }));
   };
 
-  const setError = (error: string) => {
-    setPhoneValidation((prevState) => ({
+  const setErrorUsername = (error: string) => {
+    setUserValidation((prevState) => ({
       ...prevState,
-      error: error,
+      error: {
+        ...prevState.error,
+        usernameError: error,
+      },
+    }));
+  };
+
+  const setErrorPhone = (error: string) => {
+    setUserValidation((prevState) => ({
+      ...prevState,
+      error: {
+        ...prevState.error,
+        phoneError: error,
+      },
     }));
   };
 
   useEffect(() => {
-    validatePhoneNumber({ phonenumber, setIsValid, setError });
-  }, [phonenumber]);
+    console.log("userinput is" + userinput);
+    try {
+      validatePhoneNumber({
+        userinput,
+        setIsValid,
+        setErrorPhone,
+        setErrorUsername,
+      });
+    } catch (error) {
+      console.error("Error occurred during validatePhoneNumber:", error);
+      // Handle the error appropriately (e.g., set an error state, show an error message)
+    }
+  }, [userinput]);
 
-  const sendQuery = (phonenumber: number) => {
-    console.log("Send phone number" + phonenumber);
+  const sendQuery = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Works" + userinput);
+
+    const service = new HttpService("");
+    let response = await service.sendCheckInAnswer(
+      userinput,
+      token,
+      accepted == "1"
+    );
+    if (response) {
+      navigate(`/worked?error=0&page=1&status=${accepted}`);
+    } else {
+      navigate(`/worked?error=1&page=1&status=${accepted}`);
+    }
   };
 
   if (isLoading) {
@@ -73,8 +132,9 @@ export const CheckInAccept = () => {
       ) : (
         <CheckInAcceptPhonePage
           sendQuery={sendQuery}
-          phoneValidation={phoneValidation}
+          userValidation={userValidation}
           setPhoneNumber={setPhoneNumber}
+          setUsername={setUsername}
         />
       )}
       <CheckInAppImg></CheckInAppImg>

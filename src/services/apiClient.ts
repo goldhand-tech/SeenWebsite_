@@ -76,11 +76,16 @@ class HttpService {
       });
   };
 
+  //false on error || or number invalid
+  //true on ok
   sendCheckInAnswer = (
-    phoneNumber: number,
+    userinput: { username: string; phonenumber: string },
     token: string,
+    status: boolean,
     endpoint: string = "checkins/inweb"
-  ) => {};
+  ): boolean => {
+    return false;
+  };
 }
 
 export { CanceledError, HttpService };
