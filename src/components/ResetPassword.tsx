@@ -51,7 +51,7 @@ export const ResetPassword = () => {
   if (isLoading)
     return (
       <div className={"errorDiv"}>
-        <h2>Loading...</h2>
+        <h1>Loading...</h1>
       </div>
     );
 

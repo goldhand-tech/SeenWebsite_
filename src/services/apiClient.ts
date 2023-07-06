@@ -1,4 +1,5 @@
-import axios, { AxiosInstance, CanceledError } from "axios";
+import axios, { AxiosInstance, AxiosResponse, CanceledError } from "axios";
+import { GetCheckInData } from "../hooks/useGetCheckIn";
 
 export interface ResetCredential {
   token: String;
@@ -56,6 +57,30 @@ class HttpService {
         return false;
       });
   };
+
+  getCheckInData = (
+    tokenCheckIn: string,
+    endpoint: string = "checkins/inweb"
+  ) => {
+    return this.axiosInstance
+      .get<GetCheckInData>(endpoint, {
+        headers: {
+          "x-checkin-token": tokenCheckIn,
+        },
+      })
+      .then((res) => {
+        return res.data as GetCheckInData;
+      })
+      .catch(() => {
+        return null;
+      });
+  };
+
+  sendCheckInAnswer = (
+    phoneNumber: number,
+    token: string,
+    endpoint: string = "checkins/inweb"
+  ) => {};
 }
 
 export { CanceledError, HttpService };

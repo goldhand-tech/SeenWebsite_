@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         element: <ResetPassword />,
       },
       {
-        path: "checkin",
+        path: "checkins",
         element: <CheckInAccept />,
       },
     ],

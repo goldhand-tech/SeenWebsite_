@@ -1,21 +1,22 @@
+import { GetCheckInData } from "../../hooks/useGetCheckIn";
+
 interface Props {
-  data: DataCheckIn;
+  dataCheckIn: GetCheckInData;
   onClick: (nr: number) => void;
 }
 
-interface DataCheckIn {
-  location: string;
-  time: string;
-  usernameWhoInvited: string;
-}
-
-export const CheckInAcceptPage = ({ data, onClick }: Props) => {
+export const CheckInAcceptPage = ({ dataCheckIn, onClick }: Props) => {
   return (
     <div className="m-auto">
       {
         <h1 className="checkin-h">
-          {data.usernameWhoInvited} has checkined with you at: {data.location}{" "}
-          at: {data.time}
+          <span>
+            {" "}
+            {"@"}
+            {dataCheckIn.username}{" "}
+          </span>
+          has checkined with you at: <span>{dataCheckIn.place} </span> at:{"  "}
+          <span>{dataCheckIn.time} </span>
         </h1>
       }
       <div className="d-flex flex-row justify-content-around">
