@@ -10,19 +10,22 @@ export const StatusResetPasswordPage = () => {
 
   const errorFound = error == "0";
 
+  console.log("Status is" + status);
+  console.log("Page mode is" + pageMode);
+
   if (error == null || pageMode == null) {
     throw new Error();
   }
 
-  if (pageMode == "0" && status != null) {
+  if (pageMode == "0") {
     const accepted = status == "1";
 
     return (
       <div className="errorDiv">
         {errorFound ? (
-          <h2>Password changed lets go</h2>
+          <h2>Password changed let's go.</h2>
         ) : (
-          <h2>Sorry something went wrong, try again later please</h2>
+          <h2>Sorry something went wrong, try again later please.</h2>
         )}
       </div>
     );
@@ -34,7 +37,7 @@ export const StatusResetPasswordPage = () => {
             {status ? "Join your friends to the checkin" : "Maybe next time?"}
           </h2>
         ) : (
-          <h2>Sorry something went wrong, try again later please</h2>
+          <h2>Sorry something went wrong, try again later please.</h2>
         )}
       </div>
     );
