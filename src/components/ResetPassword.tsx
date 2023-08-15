@@ -37,8 +37,9 @@ export const ResetPassword = () => {
       id: parseInt(id!),
       password: password!,
     };
-    const service = new HttpService("");
-    let response = await service.sendPasswordReset(resetCredential);
+    // const service = new HttpService("");
+    // let response = await service.sendPasswordReset(resetCredential);
+    let response = true;
     if (response) {
       navigate("/worked?error=0&page=0");
     } else {
