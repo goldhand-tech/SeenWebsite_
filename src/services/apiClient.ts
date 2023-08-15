@@ -79,7 +79,12 @@ class HttpService {
   //false on error || or number invalid
   //true on ok
   sendCheckInAnswer = (
-    userinput: { username: string; phonenumber: string; time: string },
+    userinput: {
+      username: string;
+      phonenumber: string;
+      time: string;
+      status: boolean;
+    },
     token: string,
     status: boolean,
     endpoint: string = "checkins/inweb"

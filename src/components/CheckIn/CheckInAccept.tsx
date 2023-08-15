@@ -91,9 +91,10 @@ export const CheckInAccept = () => {
     e.preventDefault();
 
     const service = new HttpService("");
-    console.log("The token is" + token);
+    let accept = accepted == "1";
+
     let response = await service.sendCheckInAnswer(
-      { ...userinput, time: getCurrentTime() },
+      { ...userinput, time: getCurrentTime(), status: accept },
       token,
       accepted == "1"
     );

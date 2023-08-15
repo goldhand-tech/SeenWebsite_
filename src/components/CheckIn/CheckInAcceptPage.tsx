@@ -15,7 +15,7 @@ export const CheckInAcceptPage = ({ dataCheckIn, onClick }: Props) => {
             {"@"}
             {dataCheckIn.username}{" "}
           </span>
-          has checkined with you at: <span>{dataCheckIn.place} </span> at:{"  "}
+          has invited you at: <span>{dataCheckIn.place} </span> at:{"  "}
           <span>{dataCheckIn.time} </span>
         </h1>
       }
