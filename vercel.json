@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/termsconditions",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/privacypolicy",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/worked",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/passwordreset",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/checkins",
+      "dest": "/index.html"
+    }
+  ]
+}
