@@ -24,5 +24,11 @@
       "src": "/checkins",
       "dest": "/index.html"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
