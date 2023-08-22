@@ -24,8 +24,5 @@
       "src": "/checkins",
       "dest": "/index.html"
     }
-  ],
-  "error": {
-    "404": "/index.html"
-  }
+  ]
 }
