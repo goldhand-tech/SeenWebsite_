@@ -127,7 +127,6 @@ export const HomePage = () => {
             So for the people part of a party whatever they want to discuss
             stays between them, no leaks.
           </p>
-          å
         </div>
       </div>
 
