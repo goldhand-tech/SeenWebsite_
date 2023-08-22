@@ -1,4 +1,6 @@
 export const TermsConditions = () => {
+  return <h1>hello</h1>;
+
   return (
     <>
       <meta charSet="UTF-8" />
