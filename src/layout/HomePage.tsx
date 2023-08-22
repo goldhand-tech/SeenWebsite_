@@ -2,7 +2,6 @@ import pic1 from "../assets/images/checkin1.jpeg";
 import pic2 from "../assets/images/checkin_blurred.jpeg";
 import pic3 from "../assets/images/invites.jpeg";
 import pic4 from "../assets/images/chat.jpeg";
-import pic5 from "../assets/images/memories.jpeg";
 import appBtn from "../assets/images/app-badge.svg";
 import { useEffect, useRef } from "react";
 
@@ -128,22 +127,7 @@ export const HomePage = () => {
             So for the people part of a party whatever they want to discuss
             stays between them, no leaks.
           </p>
-        </div>
-      </div>
-
-      <div className="grid-container">
-        <div className="grid-img">
-          <img src={pic5} alt="Your Image" />
-        </div>
-        <div className="grid-text">
-          <p>
-            <b> Memories </b>
-            <br />
-            <br />
-            In this app memories are collective. If you have joined a party with
-            5 of your friends, you will share the same memory not just with the
-            5 people but with all other people.
-          </p>
+          å
         </div>
       </div>
 
@@ -157,8 +141,8 @@ export const HomePage = () => {
         <h1>
           For any feedback, inquiries, information regarding the app, please
           dont hesitate to contact us at:
-          <a className="mail" href="mailto: pop.development.contact@gmail.com">
-            pop.development.contact@gmail.com
+          <a className="mail" href="mailto: happy@seen.com">
+            happy@seen.com
           </a>
         </h1>
       </footer>

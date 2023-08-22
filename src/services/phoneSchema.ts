@@ -1,5 +1,3 @@
-import { isValid } from "zod";
-
 interface Props {
   userinput: { phonenumber: string; username: string };
   setIsValid: (valid: boolean) => void;

@@ -18,8 +18,6 @@ export const StatusResetPasswordPage = () => {
   }
 
   if (pageMode == "0") {
-    const accepted = status == "1";
-
     return (
       <div className="errorDiv">
         {errorFound ? (

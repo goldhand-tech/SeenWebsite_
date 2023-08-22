@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse, CanceledError } from "axios";
+import axios, { AxiosInstance, CanceledError } from "axios";
 import { GetCheckInData } from "../hooks/useGetCheckIn";
 
 export interface ResetCredential {
@@ -19,7 +19,7 @@ class HttpService {
   constructor(endpoint: string) {
     this.endpoint = endpoint;
     this.axiosInstance = axios.create({
-      baseURL: "http://127.0.0.1:3000/api/",
+      baseURL: "https://seenv2-0de586723e70.herokuapp.com/api/",
     });
   }
 
@@ -89,6 +89,8 @@ class HttpService {
     status: boolean,
     endpoint: string = "checkins/inweb"
   ): Promise<boolean> => {
+    if (status) {
+    }
     return this.axiosInstance
       .post(endpoint, userinput, {
         headers: {
@@ -102,7 +104,7 @@ class HttpService {
           return false;
         }
       })
-      .catch((e) => {
+      .catch(() => {
         return false;
       });
   };

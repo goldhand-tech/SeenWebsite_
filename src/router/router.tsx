@@ -3,7 +3,6 @@ import { ResetPassword } from "../components/ResetPassword";
 import { HomePage } from "../layout/HomePage";
 import { PrivacyPolicy } from "../components/PrivacyPolicy";
 import { TermsConditions } from "../components/TermsConditions";
-import { ResetLayout } from "../components/ResetLayout";
 import { StatusResetPasswordPage } from "../components/StatusResetPasswordPage";
 import { Layout } from "../layout/Layout";
 import { ErrorPage } from "../layout/ErrorPage";
