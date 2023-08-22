@@ -26,7 +26,6 @@
     }
   ],
   "error": {
-    "404": "/index.html",
-    "*": "/index.html"
+    "404": "/index.html"
   }
 }
