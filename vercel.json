@@ -23,10 +23,10 @@
     {
       "src": "/checkins",
       "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
     }
-  ]
+  ],
+  "error": {
+    "404": "/index.html",
+    "*": "/index.html"
+  }
 }
