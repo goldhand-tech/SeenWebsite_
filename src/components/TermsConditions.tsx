@@ -321,7 +321,7 @@ export const TermsConditions = () => {
               color: "white",
             }}
           >
-            You can contact us by&nbsp;email at&nbsp;happy@seen.com
+            You can contact us by&nbsp;email at&nbsp;contact@go-seen.com
           </span>
           <span
             lang="EN-US"
@@ -1172,7 +1172,7 @@ export const TermsConditions = () => {
           >
             If you wish to make any use of the Services, Content, or Marks other
             than as set out in this section or elsewhere in our Legal Terms,
-            please address your request to:&nbsp;happy@seen.com. If we ever
+            please address your request to:&nbsp;contact@go-seen.com. If we ever
             grant you the permission to post, reproduce, or publicly display any
             part of our Services or Content, you must identify us as the owners
             or licensors of the Services, Content, or Marks and ensure that any
@@ -4121,7 +4121,8 @@ export const TermsConditions = () => {
                         color: "white",
                       }}
                     >
-                      You can contact us by&nbsp;email at&nbsp;happy@seen.com
+                      You can contact us by&nbsp;email
+                      at&nbsp;contact@go-seen.com
                     </span>
                     <span
                       lang="EN-US"
@@ -5051,7 +5052,7 @@ export const TermsConditions = () => {
                       If you wish to make any use of the Services, Content, or
                       Marks other than as set out in this section or elsewhere
                       in our Legal Terms, please address your request
-                      to:&nbsp;happy@seen.com. If we ever grant you the
+                      to:&nbsp;contact@go-seen.com. If we ever grant you the
                       permission to post, reproduce, or publicly display any
                       part of our Services or Content, you must identify us as
                       the owners or licensors of the Services, Content, or Marks
@@ -8114,7 +8115,7 @@ export const TermsConditions = () => {
                           color: "white",
                         }}
                       >
-                        happy@seen.com
+                        contact@go-seen.com
                       </span>
                     </b>
                   </p>

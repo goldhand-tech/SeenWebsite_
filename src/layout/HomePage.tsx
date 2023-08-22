@@ -140,8 +140,8 @@ export const HomePage = () => {
         <h1>
           For any feedback, inquiries, information regarding the app, please
           dont hesitate to contact us at:
-          <a className="mail" href="mailto: happy@seen.com">
-            happy@seen.com
+          <a className="mail" href="mailto: contact@go-seen.com">
+            contact@go-seen.com
           </a>
         </h1>
       </footer>

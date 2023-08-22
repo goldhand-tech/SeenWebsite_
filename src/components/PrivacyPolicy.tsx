@@ -152,7 +152,8 @@ export const PrivacyPolicy = () => {
               Reading this privacy notice will help you understand your privacy
               rights and choices. If you do not agree with our policies and
               practices, please do not use our Services. If you still have any
-              questions or concerns, please contact us at&nbsp;happy@seen.com.
+              questions or concerns, please contact us
+              at&nbsp;contact@go-seen.com .
             </span>
           </p>
           <p className="MsoNormal">
@@ -3136,7 +3137,7 @@ export const PrivacyPolicy = () => {
               }}
             >
               If you have questions or comments about your privacy rights, you
-              may email us at&nbsp;happy@seen.com.
+              may email us at&nbsp;contact@go-seen.com.
             </span>
           </p>
           <p className="MsoNormal">
@@ -3445,8 +3446,8 @@ export const PrivacyPolicy = () => {
               }}
             >
               If you have questions or comments about this notice, you
-              may&nbsp;email us at&nbsp;happy@seen.com&nbsp;or contact us by
-              post at:
+              may&nbsp;email us at&nbsp;contact@go-seen.com&nbsp;or contact us
+              by post at:
             </span>
           </p>
           <p className="MsoNormal">
@@ -3549,7 +3550,7 @@ export const PrivacyPolicy = () => {
               right to request access to the personal information we collect
               from you, change that information, or delete it.&nbsp;To request
               to review, update, or delete your personal information, please
-              contact us at happy@seen.com
+              contact us at contact@go-seen.com
             </span>
             <span style={{ color: "white" }}>
               <a
