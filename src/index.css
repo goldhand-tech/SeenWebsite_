@@ -382,3 +382,10 @@ label {
 }
 
 /*Label*/
+
+.redirect {
+  margin-top: 30vh;
+  text-align: center;
+  color: white;
+  font-family: "LemonMilk";
+}

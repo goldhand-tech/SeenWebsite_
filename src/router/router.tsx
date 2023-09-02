@@ -7,6 +7,7 @@ import { StatusResetPasswordPage } from "../components/StatusResetPasswordPage";
 import { Layout } from "../layout/Layout";
 import { ErrorPage } from "../layout/ErrorPage";
 import CheckInAccept from "../components/CheckIn/CheckInAccept";
+import { AppStoreLink } from "../components/AppStoreLink";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "checkins",
         element: <CheckInAccept />,
+      },
+      {
+        path: "link_to_app_store",
+        element: <AppStoreLink />,
       },
     ],
   },
