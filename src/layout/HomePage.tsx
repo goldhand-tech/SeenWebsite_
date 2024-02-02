@@ -132,7 +132,7 @@ export const HomePage = () => {
 
       <a
         className="app-store-button"
-        href="https://apps.apple.com/ro/app/seen/id6449669738"
+        href="https://apps.apple.com/us/app/seen/id6463472387"
       >
         <img src={appBtn} alt="Available on App Store" />
       </a>
